@@ -15,11 +15,11 @@ RUN apt-get update \
 # Install project dependencies
 RUN pip3 install --no-cache-dir poetry==${POETRY_VERSION} \ 
     && poetry env use 3.12
-    
-RUN poetry config virtualenvs.create false \
-    && poetry install --no-dev --no-interaction --no-ansi
 
 COPY src/ ./src
+
+RUN poetry config virtualenvs.create false \
+    && poetry install --no-dev --no-interaction --no-ansi
 
 EXPOSE 80
 
