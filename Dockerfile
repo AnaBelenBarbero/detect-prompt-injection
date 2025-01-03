@@ -19,4 +19,6 @@ RUN pip3 install --no-cache-dir poetry==${POETRY_VERSION} \
 
 COPY src/ ./src
 
-CMD ["poetry", "run", "fastapi", "run", "src/predict.py", "--port", "80"]
+EXPOSE 80
+
+CMD ["poetry", "run", "fastapi", "run", "src/predict.py", "--host", "0.0.0.0", "--port", "${PORT:-80}"]
