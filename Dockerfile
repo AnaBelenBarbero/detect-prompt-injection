@@ -1,5 +1,6 @@
-# Use Python 3.12 slim as base image
 FROM python:3.12-slim
+
+ARG POETRY_VERSION=1.8.2
 
 # Set working directory
 WORKDIR /code
@@ -9,14 +10,14 @@ COPY pyproject.toml poetry.lock ./
 
 # Install system dependencies and poetry
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends curl \
-    && curl -sSL https://install.python-poetry.org | python3 - \
-    && poetry config virtualenvs.create false
+    && apt-get install -y --no-install-recommends curl
 
 # Install project dependencies
-RUN poetry install --no-dev --no-interaction
+RUN pip3 install --no-cache-dir poetry==${POETRY_VERSION} \ 
+    && poetry env use 3.12 \
+    && poetry install --no-dev --no-interaction
 
-# TODO: Review which files to copy
-COPY . .
+COPY src/ ./src
+COPY .env .env
 
-CMD ["fastapi", "run", "app/main.py", "--port", "80"]
+CMD ["poetry", "run", "fastapi", "run", "src/predict.py", "--port", "80"]

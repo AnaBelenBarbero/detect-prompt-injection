@@ -8,4 +8,4 @@ docker-build:
 	docker build -t detect-prompt-injection .
 
 docker-run:
-	docker run -p 8000:8000 detect-prompt-injection
+	docker run -p 80:80 detect-prompt-injection
