@@ -6,7 +6,7 @@ ARG POETRY_VERSION=1.8.2
 WORKDIR /code
 
 # Copy requirements files
-COPY pyproject.toml poetry.lock ./
+COPY pyproject.toml poetry.lock README.md ./
 
 # Install system dependencies and poetry
 RUN apt-get update \
@@ -15,10 +15,13 @@ RUN apt-get update \
 # Install project dependencies
 RUN pip3 install --no-cache-dir poetry==${POETRY_VERSION} \ 
     && poetry env use 3.12 \
-    && poetry install --no-dev --no-interaction
+    
+RUN poetry config virtualenvs.create false \
+    && poetry install --no-dev --no-interaction --no-ansi
 
 COPY src/ ./src
 
 EXPOSE 80
 
-CMD ["poetry", "run", "fastapi", "run", "src/predict.py", "--host", "0.0.0.0", "--port", "${PORT:-80}"]
+CMD ["poetry", "run", "uvicorn", "run", "src.predict:app", "--host", "0.0.0.0", "--port", "${PORT:-80}"]
+
