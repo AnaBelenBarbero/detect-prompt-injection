@@ -109,3 +109,5 @@ staticfiles/
 .env
 test_trainer/*
 prompt_injection_detector_fine_tuned/*
+.DS_Store
+__pycache__/*
