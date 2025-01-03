@@ -21,7 +21,7 @@ COPY src/ ./src
 RUN poetry config virtualenvs.create false \
     && poetry install --no-dev --no-interaction --no-ansi
 
-EXPOSE 80
+EXPOSE $PORT
 
-CMD ["poetry", "run", "uvicorn", "run", "src.predict:app", "--host", "0.0.0.0", "--port", "${PORT:-80}"]
+CMD ["poetry", "run", "uvicorn", "src.dummy_predict:app", "--host", "0.0.0.0", "--port", "$PORT"]
 
