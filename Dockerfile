@@ -17,7 +17,7 @@ RUN poetry install --no-dev --no-interaction --no-ansi
 
 EXPOSE 80
 
-CMD ["poetry", "run", "uvicorn", "src.dummy_predict:app", "--host", "0.0.0.0", "--port", "80"]
+CMD ["poetry", "run", "uvicorn", "src.predict:app", "--host", "0.0.0.0", "--port", "80"]
 
 # Install system dependencies and poetry
 #RUN apt-get update \
