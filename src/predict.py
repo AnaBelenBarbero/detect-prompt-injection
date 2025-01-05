@@ -6,13 +6,19 @@ from dotenv import load_dotenv
 
 import torch
 import torch.nn.functional as F
+from loguru import logger
 
 load_dotenv()
 
+
 def load_model(model_path: str, tokenizer_path: str):
     login(token=os.getenv("HF_DETECTOR_TOKEN"))
-    model_fine_tuned = AutoModelForSequenceClassification.from_pretrained(model_path, use_auth_token=True)
-    tokenizer_fine_tuned = AutoTokenizer.from_pretrained(tokenizer_path, use_auth_token=True)
+    model_fine_tuned = AutoModelForSequenceClassification.from_pretrained(
+        model_path, use_auth_token=True
+    )
+    tokenizer_fine_tuned = AutoTokenizer.from_pretrained(
+        tokenizer_path, use_auth_token=True
+    )
     return model_fine_tuned, tokenizer_fine_tuned
 
 
@@ -31,6 +37,7 @@ def detect_prompt_injection(
 
 app = FastAPI()
 
+
 @app.get("/")
 def ping():
     return {"message": "pong"}
@@ -38,6 +45,7 @@ def ping():
 
 @app.get("/predict")
 def predict(prompt: str) -> dict[str, str | float]:
+    logger.info(f"Received prompt: {prompt}")
     model, tokenizer = load_model(
         model_path="lawincode/detect-prompt-injection",
         tokenizer_path="lawincode/detect-prompt-injection",
