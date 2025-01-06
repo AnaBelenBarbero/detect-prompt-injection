@@ -47,8 +47,8 @@ By leveraging advanced algorithms and proactive monitoring, **we ensure your AI 
 
 
 ## Components
-- `train.py`: Model training pipeline with dataset preparation and fine-tuning.
-- `predict.py`: FastAPI server implementation for real-time predictions.
+- `train.py`: Model training pipeline with dataset preparation, fine-tuning and model export.
+- `predict.py`: FastAPI server implementation for real-time predictions by loading and serving the trained model.
 - `utils.py`: Utility functions for model inference.
 - Notebooks:
   - `01_spanish_jailbreak_creation.ipynb`. Calls the OpenAI API to generate datasets for fine-tuning the model.
@@ -75,9 +75,7 @@ By leveraging advanced algorithms and proactive monitoring, **we ensure your AI 
 
 #### Pre-trained transfer learning
 
-This step involves using the pretrained `madhurjindal/Jailbreak-Detector` model and fine-tuning it with your custom datasets. 
-
-Check the notebook `02_notebook.ipynb` for detailed instructions on how to perform this step.
+This step involves loading the pretrained `madhurjindal/Jailbreak-Detector` model for later fine-tuning. 
 
 #### Fine tune: data retrieval, data generation and hyperparameter tunning
 
@@ -87,7 +85,7 @@ This process is described in `01_spanish_jailbreak_creation.ipynb` and `02_noteb
 
 #### Run the training
 
-Execute the following command to train the model:
+The above steps are performed in the `train.py` script. Execute the following command to train the model:
 ```
 make run-train
 ```
@@ -106,7 +104,7 @@ This process is described in `03_upload_model_to_HF.ipynb`.
 Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/prompt-injection-detector.git
+   gh repo clone AnaBelenBarbero/detect-prompt-injection
    cd prompt-injection-detector
    ```
 
@@ -117,7 +115,7 @@ Clone the repository:
     poetry install
     ```
 
-2. Run FastApi:
+2. Run FastAPI:
 
     ```bash
     make run-api-dev
