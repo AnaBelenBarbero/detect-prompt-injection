@@ -23,7 +23,7 @@ As AI becomes integral to communication and decision-making, **malicious prompt 
 This project empowers developers to safeguard AI systems with effective prompt injection detection. Here's how:
 
 1. **Pre-trained Model**:  
-   - We use the `madhurjindal/Jailbreak-Detector` model from Hugging Face Hub.  
+   - We use the `madhurjindal/Jailbreak-Detector` model from Hugging Face Hub as a base transfer learning model.  
    - This model classifies **English prompts** as either benign or malicious, providing a reliable baseline for detection.
 
 2. **Custom Datasets**:  
@@ -139,12 +139,14 @@ The `deploy` branch of the project is synced with GCP Cloud Run via Continuous D
 
 Check `04_calling_GCP_deployed_model.ipynb` for authentication and request-building details.
 
-<img alt="Cloud_doc" src="./docs/imgs/cloud_doc.png" height="50">
+<img alt="Cloud_doc" src="./docs/imgs/cloud_doc.png" height="400">
 
 ## API Endpoints
 
 **Predict**
 GET parameters: `prompt` and a `text`.
+
+<img alt="api_doc" src="./docs/imgs/api_doc.png" height="400">
 
 Snippet to send the API GET request from Python:
 ```
@@ -158,4 +160,3 @@ response = requests.get(
 )
 response.json()
 ```
-<img alt="api_doc" src="./docs/imgs/api_doc.png" height="50">
