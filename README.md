@@ -63,7 +63,7 @@ By leveraging advanced algorithms and proactive monitoring, **we ensure your AI 
 - **Customizable**: Supports custom training with your datasets.
   
 ## Installation
-### Prerequisites 📑✅
+### 1. Prerequisites 📑✅
 - Python 3.12
 - [Poetry](https://python-poetry.org/)
   - For dependency management and venv.  
@@ -71,7 +71,7 @@ By leveraging advanced algorithms and proactive monitoring, **we ensure your AI 
   - Provides commands and shortcuts to activate the venv and run scripts described in the `Makefile`.
   - You will also need to define your Hugging Face token,`HF_TOKEN` in a `.env` file (remove the _example from the provided `.env_example` file). This token is used for uploading and loading models from Hugging Face.
   
-### Training Steps 🏋️‍♀🏋
+### 2. Training Steps 🏋️‍♀🏋
 
 #### Pre-trained transfer learning
 
@@ -98,9 +98,7 @@ Once training is complete, we upload the [saved model](https://huggingface.co/la
 
 This process is described in `03_upload_model_to_HF.ipynb`.
 
-<br>
-
-### Deployment Steps 🐳🐳
+### 3. Deployment Steps 🐳🐳
 Clone the repository:
 
    ```bash
