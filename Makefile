@@ -1,3 +1,5 @@
+.PHONY: run-train run-api-dev docker-build-local docker-run-local
+
 run-train:
 	poetry run python train.py
 
