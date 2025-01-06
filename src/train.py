@@ -168,7 +168,7 @@ def main():
     # Load environment variables and login
     print("Loading environment variables...")
     load_dotenv()
-    login(token=os.getenv('HF_DETECTOR_TOKEN'))
+    login(token=os.getenv('HF_TOKEN'))
     print("Successfully logged in to Hugging Face")
     
     # Setup model and tokenizer

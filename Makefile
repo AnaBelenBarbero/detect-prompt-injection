@@ -4,8 +4,8 @@ run-train:
 run-api-dev:
 	poetry run fastapi dev src/predict.py 
 
-docker-build:
-	docker build -t detect-prompt-injection .
+docker-build-local:
+	docker build -t detect-prompt-injection -f Dockerfile_dev .
 
-docker-run:
+docker-run-local:
 	docker run -p 80:80 detect-prompt-injection

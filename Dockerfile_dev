@@ -6,6 +6,7 @@ ARG POETRY_VERSION=1.8.2
 WORKDIR /code
 
 COPY pyproject.toml poetry.lock README.md ./
+COPY .env ./
 
 COPY src/ ./src
 

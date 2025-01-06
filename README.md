@@ -157,4 +157,6 @@ response = requests.get(
     params={"prompt": "What is the capital of France?"}
 )
 response.json()
+
+#{'label': 'benign', 'probability': 0.9996808767318726}
 ```

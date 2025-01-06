@@ -12,13 +12,9 @@ load_dotenv()
 
 
 def load_model(model_path: str, tokenizer_path: str):
-    login(token=os.getenv("HF_DETECTOR_TOKEN"))
-    model_fine_tuned = AutoModelForSequenceClassification.from_pretrained(
-        model_path, use_auth_token=True
-    )
-    tokenizer_fine_tuned = AutoTokenizer.from_pretrained(
-        tokenizer_path, use_auth_token=True
-    )
+    login(token=os.getenv("HF_TOKEN"))
+    model_fine_tuned = AutoModelForSequenceClassification.from_pretrained(model_path, use_auth_token=True)
+    tokenizer_fine_tuned = AutoTokenizer.from_pretrained(tokenizer_path, use_auth_token=True)
     return model_fine_tuned, tokenizer_fine_tuned
 
 
