@@ -13,8 +13,13 @@
 <br/>
 
 <div align="center">
-<a href="https://www.linkedin.com/company/contrastoai" target="_blank"> <img alt="Follow us on LinkedIn" src="https://img.shields.io/badge/LinkedIn-Follow%20us-blue?logo=linkedin">
+
+   <a href="https://www.linkedin.com/company/contrastoai" target="_blank"> <img alt="Follow us on LinkedIn" src="https://img.shields.io/badge/LinkedIn-Follow%20us-blue?logo=linkedin">
+   ![GitHub branch check runs](https://img.shields.io/github/check-runs/AnaBelenBarbero/detect-prompt-injection/deploy?label=Deployed%20to%20GCP)
+
 </a></div>
+
+
 
 <br/>
 
