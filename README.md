@@ -39,7 +39,9 @@ This project empowers developers to safeguard AI systems with effective prompt i
    - We fine-tune a new model using these datasets to enhance its detection capabilities.  
    - The trained model is deployed for both local and cloud-based use with FastAPI service.
 
-<img alt="Diagram" src="./docs/imgs/diagram.png" height="400">
+<div align="center">
+<img alt="Diagram" src="./docs/imgs/diagram.png" height="500">
+</div>
 
 By leveraging advanced algorithms and proactive monitoring, **we ensure your AI remains resilient, reliable, and secure against manipulation**.
 
@@ -144,14 +146,18 @@ The `deploy` branch of the project is synced with GCP Cloud Run via Continuous D
 
 Check `04_calling_GCP_deployed_model.ipynb` for authentication and request-building details.
 
+<div align="center">
 <img alt="Cloud_doc" src="./docs/imgs/cloud_doc.png" height="400">
+</div>
 
 ## API Endpoints
 
 **Predict**
 GET parameters: `prompt` and a `text`.
 
+<div align="center">
 <img alt="api_doc" src="./docs/imgs/api_doc.png" height="400">
+</div>
 
 Snippet to send the API GET request from Python:
 ```
