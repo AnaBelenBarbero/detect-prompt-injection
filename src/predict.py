@@ -1,7 +1,5 @@
 from fastapi import FastAPI
 from transformers import AutoModelForSequenceClassification, AutoTokenizer
-import os
-from huggingface_hub import login
 from dotenv import load_dotenv
 
 import torch
@@ -12,9 +10,9 @@ load_dotenv()
 
 
 def load_model(model_path: str, tokenizer_path: str):
-    login(token=os.getenv("HF_TOKEN"))
-    model_fine_tuned = AutoModelForSequenceClassification.from_pretrained(model_path, use_auth_token=True)
-    tokenizer_fine_tuned = AutoTokenizer.from_pretrained(tokenizer_path, use_auth_token=True)
+    # using HF_TOKEN envvar
+    model_fine_tuned = AutoModelForSequenceClassification.from_pretrained(model_path)
+    tokenizer_fine_tuned = AutoTokenizer.from_pretrained(tokenizer_path)
     return model_fine_tuned, tokenizer_fine_tuned
 
 
