@@ -29,6 +29,7 @@ evaluate = "^0.4.3"
 google-cloud = "^0.34.0"
 google-auth = "^2.37.0"
 google-cloud-run = "^0.10.14"
+openai = "^1.59.4"
 
 
 [build-system]
