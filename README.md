@@ -39,6 +39,8 @@ This project empowers developers to safeguard AI systems with effective prompt i
    - We fine-tune a new model using these datasets to enhance its detection capabilities.  
    - The trained model is deployed for both local and cloud-based use with FastAPI service.
 
+<img alt="Diagram" src="./docs/imgs/diagram.png" height="400">
+
 By leveraging advanced algorithms and proactive monitoring, **we ensure your AI remains resilient, reliable, and secure against manipulation**.
 
 
