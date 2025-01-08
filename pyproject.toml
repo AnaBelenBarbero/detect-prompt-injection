@@ -5,7 +5,7 @@ description = ""
 authors = ["Ana Belen Barbero <anabarberocastejon@gmail.com>"]
 readme = "README.md"
 packages = [
-    { include = "src" }
+    { include = "src" },
 ]
 
 

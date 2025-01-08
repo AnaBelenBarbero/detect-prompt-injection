@@ -4,7 +4,12 @@ run-train:
 	poetry run python train.py
 
 run-api-dev:
+	poetry install
 	poetry run fastapi dev src/predict.py 
+
+run-frontend-dev:
+	poetry install --with frontend
+	poetry run streamlit run app/main.py
 
 docker-build-local:
 	docker build -t detect-prompt-injection -f docker_dev/Dockerfile_dev .
