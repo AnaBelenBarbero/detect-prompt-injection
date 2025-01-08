@@ -15,7 +15,10 @@ docker-build-local:
 	docker build -t detect-prompt-injection -f docker_dev/Dockerfile_dev .
 
 docker-build-local-w-frontend:
-	docker build -t detect-prompt-injection -f docker_dev/Dockerfile_dev_w_frontend .
+	docker build -t detect-prompt-injection-w-frontend -f docker_dev/Dockerfile_dev_w_frontend .
 
 docker-run-local:
-	docker run -p 80:80 -p 8501:8501 detect-prompt-injection
+	docker run -p 80:80 detect-prompt-injection
+
+docker-run-local-w-frontend:
+	docker run -p 80:80 -p 8501:8501 detect-prompt-injection-w-frontend
