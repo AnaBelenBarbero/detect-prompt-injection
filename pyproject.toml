@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "final project"
+name = "detect prompt injection"
 version = "0.1.0"
 description = ""
 authors = ["Ana Belen Barbero <anabarberocastejon@gmail.com>"]
