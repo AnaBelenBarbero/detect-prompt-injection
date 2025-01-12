@@ -23,6 +23,10 @@
 
 <br/>
 
+<div align="center">
+<img alt="Diagram" src="./docs/imgs/diagram.png" height="400">
+</div>
+
 As AI becomes integral to communication and decision-making, **malicious prompt injections pose significant risks**, leading to corrupted outputs, security breaches, and ethical concerns. These vulnerabilities can **undermine trust in AI systems** and expose sensitive information.
 
 This project empowers developers to safeguard AI systems with effective prompt injection detection. Here's how:
@@ -40,7 +44,7 @@ This project empowers developers to safeguard AI systems with effective prompt i
    - The trained model is deployed for both local and cloud-based use with FastAPI service.
 
 <div align="center">
-<img alt="Diagram" src="./docs/imgs/diagram.png" height="500">
+<img alt="Diagram" src="./docs/imgs/HF_model.png" height="300">
 </div>
 
 By leveraging advanced algorithms and proactive monitoring, **we ensure your AI remains resilient, reliable, and secure against manipulation**.
