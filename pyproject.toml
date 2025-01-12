@@ -25,6 +25,7 @@ loguru = "^0.7.3"
 torch = {version = "^2.5.1+cu121", source = "pytorch"}
 transformers = "^4.47.1"
 accelerate = "^1.2.1"
+datasets = "^3.2.0"
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.5"
@@ -44,6 +45,8 @@ openai = "^1.59.4"
 ## Run with the command "poe force-cuda11"
 ## See https://github.com/python-poetry/poetry/issues/2543
 ## force-cuda11 = "pip install torch==2.4.1 xformers --index-url https://download.pytorch.org/whl/cu121"
+sentencepiece = "^0.2.0"
+googletrans = "^4.0.2"
 
 [build-system]
 requires = ["poetry-core"]
