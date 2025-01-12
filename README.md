@@ -44,7 +44,7 @@ This project empowers developers to safeguard AI systems with effective prompt i
    - The trained model is deployed for both local and cloud-based use with FastAPI service.
 
 <div align="center">
-<img alt="HF model" src="./docs/imgs/hf_model.png" height="300">
+<img alt="HF model" src="./docs/imgs/hugging_face_model.png" height="300">
 </div>
 
 By leveraging advanced algorithms and proactive monitoring, **we ensure your AI remains resilient, reliable, and secure against manipulation**.
