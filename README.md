@@ -45,7 +45,7 @@ This project empowers developers to safeguard AI systems with effective prompt i
    - The trained model is deployed for both local and cloud-based use with FastAPI service.
 
 4. **User interface**:
-   - The API is deployed in a cloud run instance and can be called from any streamlit app. We provide a simple streamlit app to test the API [here](https://detect-prompt-injection.streamlit.app/).
+   - The API is deployed in a cloud run instance and can be called from any streamlit app. We provide a simple streamlit app to test the API [here](https://detect-prompt-injections.streamlit.app/).
 
 <div align="center">
 <img alt="HF model" src="./docs/imgs/hugging_face_model.png" height="300">
