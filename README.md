@@ -44,6 +44,9 @@ This project empowers developers to safeguard AI systems with effective prompt i
    - We fine-tune a new model using these datasets to enhance its detection capabilities.  
    - The trained model is deployed for both local and cloud-based use with FastAPI service.
 
+4. **User interface**:
+   - The API is deployed in a cloud run instance and can be called from any streamlit app. We provide a simple streamlit app to test the API [here](https://detect-prompt-injection.streamlit.app/).
+
 <div align="center">
 <img alt="HF model" src="./docs/imgs/hugging_face_model.png" height="300">
 </div>
@@ -66,7 +69,7 @@ By leveraging advanced algorithms and proactive monitoring, **we ensure your AI 
 - `utils.py`: Utility functions for model inference.
 - Notebooks:
   - `01a_spanish_jailbreak_creation.ipynb` and `01b_english_jailbreak_creation.ipynb`. Download data and calls the OpenAI API to generate datasets for fine-tuning the model.
-  - `02_notebook.ipynb`. Imports the pretrained model, prepares data, performs EDA, fine-tuning, evaluation, and hyperparameter fine-tuning. 
+  - `02_notebook.ipynb` and `2a - EDA.ipynb`. Imports the pretrained model, prepares data, performs EDA, fine-tuning, evaluation, and hyperparameter fine-tuning. 
   - `03_upload_model_to_HF.ipynb`. Uploads the model to Hugging Face.
   - `04_calling_GCP_deployed_model.ipynb`. Calls the locally dockerized model and the API for the GCP-deployed model.
 
