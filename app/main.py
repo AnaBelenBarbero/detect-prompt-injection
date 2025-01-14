@@ -1,8 +1,6 @@
 import pandas as pd
 import streamlit as st
 import os
-#import streamlit_analytics
-
 from utils import load_css, predict
 
 st.set_page_config(
@@ -34,7 +32,7 @@ if prompt:
     
     # Create a visual indicator using st.container and markdown
     with st.container():
-        if result["label"] == "benign":
+        if result[0] == 'benign':
             st.markdown("### 🟢 DETECTION RESULT:")
         else:
             st.markdown("### 🔴 DETECTION RESULT:")
@@ -44,16 +42,16 @@ if prompt:
     with col1:
         st.metric(
             label="Label", 
-            value=result["label"], 
+            value=result[0], 
         )
     with col2:
         st.metric(
             label="Probability", 
-            value=f"{result['probability']:.2%}"
+            value=f"{result[1]:.2%}"
         )
     
     # Add detailed explanation in a colored box
-    if result["label"] == "benign":
+    if result[0] == "benign":
         st.success("✅ This prompt appears to be safe and doesn't show signs of injection attempts.")
     else:
         st.error(
