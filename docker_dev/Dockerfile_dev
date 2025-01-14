@@ -13,7 +13,8 @@ COPY src/ ./src
 RUN pip3 install --no-cache-dir poetry==${POETRY_VERSION} \ 
     && poetry env use 3.12
 
-RUN poetry install --no-dev --no-interaction --no-ansi
+# only main
+RUN poetry install --only main --no-interaction --no-ansi
 
 EXPOSE 80
 

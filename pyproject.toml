@@ -1,11 +1,11 @@
 [tool.poetry]
-name = "final project"
+name = "detect prompt injection"
 version = "0.1.0"
 description = ""
 authors = ["Ana Belen Barbero <anabarberocastejon@gmail.com>"]
 readme = "README.md"
 packages = [
-    { include = "src" }
+    { include = "src" },
 ]
 
 [[tool.poetry.source]]
@@ -39,7 +39,6 @@ google-auth = "^2.37.0"
 google-cloud-run = "^0.10.14"
 openai = "^1.59.4"
 ## poethepoet = "^0.32.0"
-
 ## [tool.poe.tasks]
 ## PyTorch with CUDA 11.1. If PyTorch is imported first, importing Tensorflow will detect CUDA + cuDNN bundled with PyTorch
 ## Run with the command "poe force-cuda11"
@@ -50,6 +49,9 @@ googletrans = "^4.0.2"
 tensorboard = "^2.18.0"
 plotly = "^5.24.1"
 nbformat = "^5.10.4"
+
+[tool.poetry.group.frontend.dependencies]
+streamlit = "^1.41.1"
 
 [build-system]
 requires = ["poetry-core"]

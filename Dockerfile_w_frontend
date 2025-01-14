@@ -8,13 +8,17 @@ WORKDIR /code
 COPY pyproject.toml poetry.lock README.md ./
 
 COPY src/ ./src
+COPY app/ ./app
 
 RUN pip3 install --no-cache-dir poetry==${POETRY_VERSION} \ 
     && poetry env use 3.12
 
-# only main
-RUN poetry install --only main --no-interaction --no-ansi
+# main and frontend
+RUN poetry install --without dev --no-interaction --no-ansi
 
-EXPOSE 80
+EXPOSE 80 8501
 
-CMD ["poetry", "run", "uvicorn", "src.predict:app", "--host", "0.0.0.0", "--port", "80"]
+COPY start_w_frontend.sh ./
+RUN chmod +x start_w_frontend.sh
+
+CMD ["./start_w_frontend.sh"]
