@@ -8,6 +8,10 @@ packages = [
     { include = "src" },
 ]
 
+[[tool.poetry.source]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cu121"
+priority = "explicit"
 
 [tool.poetry.dependencies]
 python = "~3.12"
@@ -15,9 +19,13 @@ pandas = "^2.2.3"
 fastapi = {extras = ["standard"], version = "^0.115.6"}
 pyarrow = "^18.1.0"
 huggingface-hub = "^0.27.0"
-transformers = {extras = ["torch"], version = "^4.47.1"}
+#transformers = {extras = ["torch"], version = "^4.47.1"}
 python-dotenv = "^1.0.1"
 loguru = "^0.7.3"
+torch = {version = "^2.5.1+cu121", source = "pytorch"}
+transformers = "^4.47.1"
+accelerate = "^1.2.1"
+datasets = "^3.2.0"
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.5"
@@ -29,6 +37,18 @@ evaluate = "^0.4.3"
 google-cloud = "^0.34.0"
 google-auth = "^2.37.0"
 google-cloud-run = "^0.10.14"
+openai = "^1.59.4"
+## poethepoet = "^0.32.0"
+## [tool.poe.tasks]
+## PyTorch with CUDA 11.1. If PyTorch is imported first, importing Tensorflow will detect CUDA + cuDNN bundled with PyTorch
+## Run with the command "poe force-cuda11"
+## See https://github.com/python-poetry/poetry/issues/2543
+## force-cuda11 = "pip install torch==2.4.1 xformers --index-url https://download.pytorch.org/whl/cu121"
+sentencepiece = "^0.2.0"
+googletrans = "^4.0.2"
+tensorboard = "^2.18.0"
+plotly = "^5.24.1"
+nbformat = "^5.10.4"
 
 [tool.poetry.group.frontend.dependencies]
 streamlit = "^1.41.1"
