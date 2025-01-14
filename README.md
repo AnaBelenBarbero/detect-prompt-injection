@@ -36,8 +36,9 @@ This project empowers developers to safeguard AI systems with effective prompt i
    - This model classifies **English prompts** as either benign or malicious, providing a reliable baseline for detection.
 
 2. **Custom Datasets**:  
-   - Using the OpenAI API, we generate two new datasets tailored for identifying injection attacks, this time **in Spanish**.  
-   - These datasets are carefully split into training and testing subsets to optimize model performance.
+   - We download several datasets from Hugging Face, including a collection of 250+ prompt injection examples and real-world examples of AI system manipulation attempts.
+   - Additionally, using OpenAI's GPT API, we generate one custom dataset in **Spanish**: +700 malicious prompts across different attack categories (direct injection, code injection, roleplay jailbreak, etc.)
+   - All datasets undergo careful preprocessing and are split 80/20 into training and testing sets to ensure robust model evaluation.
 
 3. **Model Training and Deployment**:  
    - We fine-tune a new model using these datasets to enhance its detection capabilities.  
@@ -64,7 +65,7 @@ By leveraging advanced algorithms and proactive monitoring, **we ensure your AI 
 - `predict.py`: FastAPI server implementation for real-time predictions by loading and serving the trained model.
 - `utils.py`: Utility functions for model inference.
 - Notebooks:
-  - `01_spanish_jailbreak_creation.ipynb`. Calls the OpenAI API to generate datasets for fine-tuning the model.
+  - `01a_spanish_jailbreak_creation.ipynb` and `01b_english_jailbreak_creation.ipynb`. Download data and calls the OpenAI API to generate datasets for fine-tuning the model.
   - `02_notebook.ipynb`. Imports the pretrained model, prepares data, performs EDA, fine-tuning, evaluation, and hyperparameter fine-tuning. 
   - `03_upload_model_to_HF.ipynb`. Uploads the model to Hugging Face.
   - `04_calling_GCP_deployed_model.ipynb`. Calls the locally dockerized model and the API for the GCP-deployed model.
