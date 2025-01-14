@@ -1,7 +1,7 @@
 .PHONY: run-train run-api-dev docker-build-local docker-run-local
 
 run-train:
-	poetry run python train.py
+	poetry run python src/train.py
 
 run-api-dev:
 	poetry run fastapi dev src/predict.py 

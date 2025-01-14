@@ -6,8 +6,12 @@ import pandas as pd
 import torch
 from dotenv import load_dotenv
 from torch.utils.data import Dataset
-from transformers import (AutoModelForSequenceClassification, AutoTokenizer,
-                          Trainer, TrainingArguments)
+from transformers import (
+    AutoModelForSequenceClassification,
+    AutoTokenizer,
+    Trainer,
+    TrainingArguments,
+)
 from transformers.tokenization_utils_base import BatchEncoding
 
 load_dotenv()
@@ -41,25 +45,44 @@ def load_datasets() -> pd.DataFrame:
     Returns:
         Combined DataFrame
     """
+    from pathlib import Path
 
     # english
-    df_3k_neg = pd.read_csv("../data/negative_3k_en_prompts.csv")
-    df_3k_ben = pd.read_csv("../data/benign_2k_en_prompts.csv")
+    df_3k_neg = pd.read_csv(Path(__file__).parents[1] / "data/negative_3k_en_prompts.csv")
+    df_3k_ben = pd.read_csv(Path(__file__).parents[1] / "data/benign_2k_en_prompts.csv")
 
-    english_dataset = pd.concat([df_3k_neg, df_3k_ben], ignore_index=True)
+    english_dataset = pd.concat(
+        [
+            df_3k_neg.sample(1100, random_state=1001),
+            df_3k_ben.sample(1100, random_state=1001),
+        ],
+        ignore_index=True,
+    )
     english_dataset.dropna(inplace=True)
 
     # spanish
-    df_3k_neg_esp = pd.read_csv("../data/negative_3k_es_prompts.csv")
-    df_3k_ben_esp = pd.read_csv("../data/benign_2k_es_prompts.csv")
-    df_3k_neg_esp.rename(columns={"tipo": "type"}, inplace=True)
+    df_3k_neg_long_esp = pd.read_csv(Path(__file__).parents[1] / "data/negative_3k_es_prompts.csv")
+    df_700_neg_short_esp = pd.read_csv(Path(__file__).parents[1] / "data/negative_700_es_prompts.csv")
+    df_700_neg_short_esp["tipo"] = 1
+    df_3k_ben_esp = pd.read_csv(Path(__file__).parents[1] / "data/benign_2k_es_prompts.csv")
+    df_3k_neg_long_esp.rename(columns={"tipo": "type"}, inplace=True)
+    df_700_neg_short_esp.rename(columns={"tipo": "type"}, inplace=True)
     df_3k_ben_esp.rename(columns={"tipo": "type"}, inplace=True)
 
-    spanish_dataset = pd.concat([df_3k_ben_esp, df_3k_neg_esp], ignore_index=True)
+    spanish_dataset = pd.concat(
+        [
+            df_3k_ben_esp.sample(1000, random_state=1001),
+            df_3k_neg_long_esp.sample(300, random_state=1001),
+            df_700_neg_short_esp,
+        ],
+        ignore_index=True,
+    )
     spanish_dataset.dropna(inplace=True)
 
-    # Combine datasets
-    return pd.concat([english_dataset, spanish_dataset], ignore_index=True)
+    # Combine eng, esp and mixed datasets
+    df_mix = pd.read_csv(Path(__file__).parents[1] / "data/mixed_en_prompts.csv")
+
+    return pd.concat([english_dataset, spanish_dataset, df_mix], ignore_index=True)
 
 
 def prepare_datasets(
@@ -153,15 +176,22 @@ def create_trainer(
     Returns:
         Trainer instance
     """
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = model.to(device)
+    print(next(model.parameters()).device)
+
     if training_args is None:
         training_args = TrainingArguments(
             output_dir="test_trainer",
-            evaluation_strategy="epoch",
-            learning_rate=2e-5,
-            per_device_train_batch_size=8,
-            per_device_eval_batch_size=8,
+            eval_strategy="steps",
+            learning_rate=1e-5,
+            per_device_train_batch_size=32,
+            per_device_eval_batch_size=32,
             num_train_epochs=3,
-            weight_decay=0.01,
+            weight_decay=0.3,
+            metric_for_best_model="f1",
+            no_cuda=False,
+            save_total_limit=2,
         )
 
     return Trainer(
