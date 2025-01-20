@@ -45,7 +45,7 @@ def ping():
 def predict(prompt: str) -> dict[str, str | float]:
     logger.info(f"Received prompt: {prompt}")
     model, tokenizer = load_model(
-        model_path="lawincode/detect-prompt-injection",
-        tokenizer_path="lawincode/detect-prompt-injection",
+        model_path="ana-contrasto-ai/detect-prompt-injection",
+        tokenizer_path="ana-contrasto-ai/detect-prompt-injection",
     )
     return detect_prompt_injection(model, tokenizer, prompt)

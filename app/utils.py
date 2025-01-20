@@ -26,8 +26,8 @@ def load_css() -> str:
 @st.cache_data
 def load_cache_model() -> tuple[AutoModelForSequenceClassification, AutoTokenizer]:
     model, tokenizer = load_model(
-        model_path="lawincode/detect-prompt-injection",
-        tokenizer_path="lawincode/detect-prompt-injection",
+        model_path="ana-contrasto-ai/detect-prompt-injection",
+        tokenizer_path="ana-contrasto-ai/detect-prompt-injection",
     )
     return model, tokenizer
 

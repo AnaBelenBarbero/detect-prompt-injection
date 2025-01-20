@@ -111,7 +111,7 @@ The trained model (`safe_tensors`) and tokenizer are saved using the `transforme
  
 #### Upload trained model to Hugging Face
 
-Once training is complete, we upload the [saved model](https://huggingface.co/lawincode/detect-prompt-injection/tree/main) to Hugging Face for easy deployment and sharing. 
+Once training is complete, we upload the [saved model](https://huggingface.co/ana-contrasto-ai/detect-prompt-injection/tree/main) to Hugging Face for easy deployment and sharing. 
 
 This process is described in `03_upload_model_to_HF.ipynb`.
 
