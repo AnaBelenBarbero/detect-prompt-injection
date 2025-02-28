@@ -12,6 +12,7 @@ from transformers import (
     Trainer,
     TrainingArguments,
 )
+from transformers.models.auto.auto_factory import _BaseAutoModelClass
 from transformers.tokenization_utils_base import BatchEncoding
 
 load_dotenv()
@@ -141,25 +142,29 @@ def compute_metrics(eval_pred) -> Dict:
 
 def setup_model_and_tokenizer(
     model_name: str,
+    model_args: dict = {},
+    tokenizer_args: dict = {},
+    model_type: _BaseAutoModelClass = AutoModelForSequenceClassification,
 ) -> Tuple[AutoModelForSequenceClassification, AutoTokenizer]:
     """
     Setup the model and tokenizer
 
     Args:
         model_name: Name or path of the model
+        model_args: Arguments for the model
+        tokenizer_args: Arguments for the tokenizer
+        model_type: Type of model to use
 
     Returns:
         Tuple of (model, tokenizer)
     """
-    model = AutoModelForSequenceClassification.from_pretrained(
-        model_name, use_auth_token=True
-    )
-    tokenizer = AutoTokenizer.from_pretrained(model_name, use_auth_token=True)
+    model = model_type.from_pretrained(model_name, use_auth_token=True, **model_args)
+    tokenizer = AutoTokenizer.from_pretrained(model_name, use_auth_token=True, **tokenizer_args)
     return model, tokenizer
 
 
 def create_trainer(
-    model: AutoModelForSequenceClassification,
+    model: _BaseAutoModelClass,
     train_dataset: PromptDataset,
     eval_dataset: PromptDataset,
     training_args: Dict | None = None,

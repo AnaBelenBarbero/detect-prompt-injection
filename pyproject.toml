@@ -26,6 +26,9 @@ torch = {version = "^2.5.1+cu121", source = "pytorch"}
 transformers = "^4.47.1"
 accelerate = "^1.2.1"
 datasets = "^3.2.0"
+deepspeed = "^0.16.4"
+peft = "^0.14.0"
+trl = "^0.15.2"
 
 [tool.poetry.group.dev.dependencies]
 ipykernel = "^6.29.5"
